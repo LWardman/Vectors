@@ -1,19 +1,35 @@
 #include <iostream>
 #include "vec3.h"
 
+
 int main()
 {
-    auto* zeroVector = new vec3{0, 0, 0};
+    vec3 firstVector{ 4, 2, 9 };
 
-    zeroVector->printCoords();
+    firstVector.printCoords();
 
-    auto* newVector = new vec3{1, 2, 3};
+    vec3 secondVector{ 1, 2, 3 };
 
-    newVector->printCoords();
+    secondVector.printCoords();
 
-    newVector = newVector;
+    std::cout << "Magnitude : " << secondVector.getMagnitude() << std::endl;
 
-    newVector->printCoords();
+    secondVector.normalize();
+
+    secondVector.printCoords();
+
+    std::cout << "Magnitude : " << secondVector.getMagnitude() << std::endl;
+
+    std::cout << "Angle between first and second vector : " << vec3::getAngleBetween(firstVector, secondVector) << std::endl;
+
+    std::cout << "Perpendicular vector to first and second vector : " << std::endl;
+
+    vec3 perpVec = vec3::getPerpendicularVector(firstVector, secondVector);
+
+    std::cout << "Angle between first and perp vector : " << vec3::getAngleBetween(firstVector, perpVec) << std::endl;
+    std::cout << "Angle between second and perp vector : " << vec3::getAngleBetween(secondVector, perpVec) << std::endl;
+
+    vec3::getPerpendicularVector(firstVector, secondVector).printCoords();
 
 
     return 0;

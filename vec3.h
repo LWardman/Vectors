@@ -13,7 +13,7 @@ public:
     // On default initialization, sets the vector to be the zero vector.
     vec3() : _x(0), _y(0), _z(0) {}
 
-    vec3(float x, float y, float z) : _x(x), _y(y), _z(z) {}
+    vec3(double x, double y, double z) : _x(x), _y(y), _z(z) {}
 
     vec3& operator= (const vec3& otherVec3)
     {
@@ -57,14 +57,22 @@ public:
         return *this;
     }
 
-
     void printCoords() const;
+
+    [[nodiscard]] double getMagnitude() const;
+
+    void normalize();
+
+    static double getAngleBetween(const vec3& firstVec, const vec3& secondVec);
+
+    static vec3 getPerpendicularVector(const vec3& firstVec, const vec3& secondVec);
+
 
 
 private:
-    float _x;
-    float _y;
-    float _z;
+    double _x;
+    double _y;
+    double _z;
 
 };
 
