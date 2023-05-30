@@ -17,6 +17,11 @@ double vec3::getMagnitude() const
     return std::sqrt(_x * _x + _y * _y + _z * _z);
 }
 
+void vec3::printMagnitude() const
+{
+    std::cout << "=====\nmagnitude is : " << getMagnitude() << "\n=====" << std::endl;
+}
+
 void vec3::normalize()
 {
     double magnitude = getMagnitude();
