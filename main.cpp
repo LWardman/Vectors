@@ -1,25 +1,28 @@
 #include <iostream>
 #include "vec3.h"
+#include "VectorDatabank.h"
 
 
 int main()
 {
+    // Initialising two test vectors, these will be used to test other features in the vec3 class.
     vec3 firstVector{ 4, 2, 9 };
-
     firstVector.printCoords();
 
     vec3 secondVector{ 1, 2, 3 };
-
     secondVector.printCoords();
 
-    std::cout << "Magnitude : " << secondVector.getMagnitude() << std::endl;
+    // Testing the class' ability to get the magnitude and divide each entry by the magnitude.
+    // It's expected that the magnitude after normalising is 1.
+    secondVector.printMagnitude();
 
     secondVector.normalize();
 
     secondVector.printCoords();
 
-    std::cout << "Magnitude : " << secondVector.getMagnitude() << std::endl;
+    secondVector.printMagnitude();
 
+    // Testing the class' ability to generate a perpendicular vector.
     std::cout << "Angle between first and second vector : " << vec3::getAngleBetween(firstVector, secondVector) << std::endl;
 
     std::cout << "Perpendicular vector to first and second vector : " << std::endl;
@@ -31,6 +34,12 @@ int main()
 
     vec3::getPerpendicularVector(firstVector, secondVector).printCoords();
 
+    // Testing the VectorDatabank.
+    VectorDatabank vector{ vec3{ 9, 4, 3 } };
+
+    vector.printVector();
+    vector.printNormalVector();
+    vector.printMagnitude();
 
     return 0;
 }
