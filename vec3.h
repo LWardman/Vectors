@@ -1,6 +1,3 @@
-//
-// Created by Wardy on 29/05/2023.
-//
 
 #ifndef VECTORS_VEC3_H
 #define VECTORS_VEC3_H
@@ -15,7 +12,8 @@ public:
 
     vec3(double x, double y, double z) : _x(x), _y(y), _z(z) {}
 
-    // Handles overwriting of this vector with another vector.
+    // Operation overloads
+
     vec3& operator= (const vec3& otherVec3)
     {
         if (this == &otherVec3)
@@ -30,7 +28,6 @@ public:
         return *this;
     }
 
-    // Handles addition of another vector to this vector.
     vec3& operator+= (const vec3& otherVec3)
     {
         if (this == &otherVec3)
@@ -45,7 +42,6 @@ public:
         return *this;
     }
 
-    // Handles subtraction of another vector to this vector.
     vec3& operator-= (const vec3& otherVec3)
     {
         if (this == &otherVec3)
@@ -79,7 +75,7 @@ public:
     /**
      * * Prints out the magnitude calculated in getMagnitude().
      *
-     * * Useful for debugging and testing whether normalize() has done it's job/
+     * * Useful for debugging and testing whether normalize() has done it's job.
      *
      * * Also used in the normalize() function.
      */
@@ -94,7 +90,7 @@ public:
      * * Normalization is done by dividing each entry in the vector by the magnitude of the vector.
      *   e.g (1, 1, 1) becomes (0.57735, 0.57735, 0.57735).
      */
-    void normalize();
+    vec3 normalize() const;
 
     /**
      * * Calculates the angle between two vectors via the dot product.
@@ -124,14 +120,11 @@ public:
      */
     static vec3 getPerpendicularVector(const vec3& firstVec, const vec3& secondVec);
 
-
-
 private:
     double _x;
     double _y;
     double _z;
 
 };
-
 
 #endif //VECTORS_VEC3_H
