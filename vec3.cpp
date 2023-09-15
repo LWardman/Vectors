@@ -1,6 +1,3 @@
-//
-// Created by Wardy on 29/05/2023.
-//
 
 #include "vec3.h"
 #include <cmath>
@@ -22,13 +19,11 @@ void vec3::printMagnitude() const
     std::cout << "=====\nmagnitude is : " << getMagnitude() << "\n=====" << std::endl;
 }
 
-void vec3::normalize()
+vec3 vec3::normalize() const
 {
     double magnitude = getMagnitude();
 
-    _x /= magnitude;
-    _y /= magnitude;
-    _z /= magnitude;
+    return vec3{_x / magnitude, _y / magnitude, _z / magnitude};
 }
 
 double vec3::getAngleBetween(const vec3& firstVec, const vec3& secondVec)
