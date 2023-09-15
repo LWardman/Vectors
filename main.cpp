@@ -1,6 +1,5 @@
 #include <iostream>
 #include "vec3.h"
-#include "VectorDatabank.h"
 
 
 int main()
@@ -33,13 +32,6 @@ int main()
     std::cout << "Angle between second and perp vector : " << vec3::getAngleBetween(secondVector, perpVec) << std::endl;
 
     vec3::getPerpendicularVector(firstVector, secondVector).printCoords();
-
-    // Testing the VectorDatabank.
-    VectorDatabank vector{ vec3{ 9, 4, 3 } };
-
-    vector.printVector();
-    vector.printNormalVector();
-    vector.printMagnitude();
 
     return 0;
 }
