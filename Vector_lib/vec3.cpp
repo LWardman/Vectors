@@ -14,11 +14,6 @@ double vec3::getMagnitude() const
     return std::sqrt(_x * _x + _y * _y + _z * _z);
 }
 
-void vec3::printMagnitude() const
-{
-    std::cout << "=====\nmagnitude is : " << getMagnitude() << "\n=====" << std::endl;
-}
-
 vec3 vec3::normalize() const
 {
     double magnitude = getMagnitude();
@@ -41,11 +36,9 @@ double vec3::getAngleBetween(const vec3& firstVec, const vec3& secondVec)
 
 vec3 vec3::getPerpendicularVector(const vec3& firstVec, const vec3& secondVec)
 {
-    vec3 perpVec{};
+    double x = firstVec._y * secondVec._z - firstVec._z * secondVec._y;
+    double y = firstVec._z * secondVec._x - firstVec._x * secondVec._z;
+    double z = firstVec._x * secondVec._y - firstVec._y * secondVec._x;
 
-    perpVec._x = firstVec._y * secondVec._z - firstVec._z * secondVec._y;
-    perpVec._y = firstVec._z * secondVec._x - firstVec._x * secondVec._z;
-    perpVec._z = firstVec._x * secondVec._y - firstVec._y * secondVec._x;
-
-    return perpVec;
+    return {x, y, z};
 }
