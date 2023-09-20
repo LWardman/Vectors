@@ -56,6 +56,16 @@ public:
         return *this;
     }
 
+    friend vec3 operator+ (const vec3& u, const vec3& v)
+    {
+        return vec3{u._x + v._x, u._y + v._y, u._z + v._z};
+    }
+
+    friend vec3 operator- (const vec3& u, const vec3& v)
+    {
+        return vec3{u._x - v._x, u._y - v._y, u._z - v._z};
+    }
+
     /**
      * Prints out the coordinates of this vector in order : x, y, z
      * Useful for debugging and sanity checks on what the current vector is.
@@ -73,24 +83,14 @@ public:
     [[nodiscard]] double getMagnitude() const;
 
     /**
-     * * Prints out the magnitude calculated in getMagnitude().
+     * * Is used to obtain a unit vector from any desired vector.
      *
-     * * Useful for debugging and testing whether normalize() has done it's job.
-     *
-     * * Also used in the normalize() function.
-     */
-    void printMagnitude() const;
-
-    /**
-     * * normalizes the current vector. Replaces the member variables of the current class.
-     *
-     * * If the current vector wants to be kept,
-     *   initialise a new vec3 based on the current vector and normalize that instead.
+     * * A unit vector is a vector whose magnitude is 1.
      *
      * * Normalization is done by dividing each entry in the vector by the magnitude of the vector.
      *   e.g (1, 1, 1) becomes (0.57735, 0.57735, 0.57735).
      */
-    vec3 normalize() const;
+    [[nodiscard]] vec3 normalize() const;
 
     /**
      * * Calculates the angle between two vectors via the dot product.
